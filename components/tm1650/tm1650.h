@@ -19,6 +19,7 @@ using tm1650_writer_t = std::function<void(TM1650Display &)>;
 class TM1650Display : public PollingComponent, public i2c::I2CDevice {
  public:
   void set_writer(tm1650_writer_t &&writer);
+  void set_raw(uint8_t pos, uint8_t value);
   void set_intensity(uint8_t intensity);
   void set_mode(uint8_t mode);
   void set_segment_map(const char *segment_map);
