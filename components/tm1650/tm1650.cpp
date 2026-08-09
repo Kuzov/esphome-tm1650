@@ -101,7 +101,7 @@ uint8_t TM1650Display::print(uint8_t start_pos, const char *str) {
 
     // Activate dot if it is next character
     if (*(str + 1) == '.') {
-      char_data |= TM1650_DOT_SEGMENT;
+      char_data |= 0b00100000;
       str++;
     }
 
