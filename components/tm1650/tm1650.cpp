@@ -15,6 +15,14 @@ void  TM1650Display::set_mode(uint8_t mode)               { this->mode_ = mode; 
 void  TM1650Display::set_power(bool power)                { this->power_ = power; }
 void  TM1650Display::set_length(uint8_t length)           { this->length_ = length; }
 void  TM1650Display::set_backward(bool backward)          { this->backward_ = backward; }
+void TM1650Display::set_raw(uint8_t pos, uint8_t value) {
+  if (pos >= this->length_) return;
+  if (this->backward_) {
+    this->buffer_[(this->length_ - 1) - pos] = value;
+  } else {
+    this->buffer_[pos] = value;
+  }
+}
 float TM1650Display::get_setup_priority() const           { return setup_priority::PROCESSOR; }
 
 void TM1650Display::set_segment_map(const char *segment_map) {
